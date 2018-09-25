@@ -10,7 +10,7 @@
 
 <article class="main-content col-xs-8">
 	<?php
-	// Step1: Make a form that submits one value to POST super global
+	// Step1: Make a form that submits three values to POST super global
 	if(isset($_POST['submit'])) {
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
@@ -27,7 +27,7 @@
 		} elseif(in_array($user_name, $users)) {
 			echo 'Welcome '.$user_name.'!';
 		} else {
-			echo $user_name.' does not exist!';
+			echo $user_name.' is not an active user!';
 		}
 	}
 	?>
