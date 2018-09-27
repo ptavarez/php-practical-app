@@ -9,10 +9,11 @@
 
 <article class="main-content col-xs-8">
   <?php
+    $connection = mysqli_connect('localhost', 'root', '', 'movies');
+    $query2 = "SELECT * FROM  films";
+    $result2 = mysqli_query($connection, $query2);
+    
     if(isset($_POST['submit'])) {
-      global $connection;
-      $connection = mysqli_connect('localhost', 'root', '', 'movies');
-      
       $title = $_POST['title'];
       $genre = $_POST['genre'];
       $rating = $_POST['rating'];
@@ -30,15 +31,12 @@
                   
         $result = mysqli_query($connection, $query);
         if(!$result) {
-          die('Query FAILED' . mysqli_error());
+          die('Query FAILED' . mysqli_error($connection));
         }
       } else {
         echo "All Fields Required!";
       }
     }
-    
-    $query2 = "SELECT * FROM  films";
-    $result2 = mysqli_query($connection, $query2);
 	?>
   <form class="" action="7.php" method="post">
     <div class="form-group">
